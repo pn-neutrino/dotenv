@@ -26,7 +26,15 @@ class DotenvTest extends PHPUnit_Framework_TestCase
             ['local', [
                 'APP_ENV' => 'local',
                 'KEY_1' => 'VALUE_1',
-                'KEY_2' => 'VALUE_2'
+                'KEY_2' => 'VALUE_2',
+                'BOOL_KEY_TRUE_1' => 'true',
+                'BOOL_KEY_TRUE_2' => '(true)',
+                'BOOL_KEY_FALSE_1' => 'false',
+                'BOOL_KEY_FALSE_2' => '(false)',
+                'EMPTY_KEY_1' => 'empty',
+                'EMPTY_KEY_2' => '(empty)',
+                'NULL_KEY_1' => 'null',
+                'NULL_KEY_2' => '(null)'
             ]],
             ['testing', [
                 'APP_ENV' => 'testing',
@@ -78,7 +86,15 @@ class DotenvTest extends PHPUnit_Framework_TestCase
         $expected = [
             'APP_ENV' => 'local',
             'KEY_1' => 'VALUE_1',
-            'KEY_2' => 'VALUE_2'
+            'KEY_2' => 'VALUE_2',
+            'BOOL_KEY_TRUE_1' => true,
+            'BOOL_KEY_TRUE_2' => true,
+            'BOOL_KEY_FALSE_1' => false,
+            'BOOL_KEY_FALSE_2' => false,
+            'EMPTY_KEY_1' => '',
+            'EMPTY_KEY_2' => '',
+            'NULL_KEY_1' => null,
+            'NULL_KEY_2' => null
         ];
 
         foreach ($expected as $key => $value) {
