@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Neutrino\\Dotenv\\": "src/Dotenv/"
+      "Neutrino\\": "src/"
     }
   },
   "minimum-stability": "dev"

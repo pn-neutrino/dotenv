@@ -14,7 +14,7 @@ class DotenvTest extends PHPUnit_Framework_TestCase
     $env    = $_ENV;
     $server = $_SERVER;
 
-    $this->assertFalse(\Neutrino\Dotenv\Dotenv::load(__DIR__));
+    $this->assertFalse(\Neutrino\Dotenv\Loader::load(__DIR__));
 
     $this->assertEquals($env, $_ENV);
     $this->assertEquals($server, $_SERVER);
@@ -31,7 +31,7 @@ class DotenvTest extends PHPUnit_Framework_TestCase
 
     $path = __DIR__ . DIRECTORY_SEPARATOR . 'fixture' . DIRECTORY_SEPARATOR . 'testing';
 
-    $this->assertTrue(\Neutrino\Dotenv\Dotenv::load($path));
+    $this->assertTrue(\Neutrino\Dotenv\Loader::load($path));
 
     foreach ($expected as $key => $value) {
       if (function_exists('putenv')) {
@@ -53,6 +53,6 @@ class DotenvTest extends PHPUnit_Framework_TestCase
   {
     $path = __DIR__ . DIRECTORY_SEPARATOR . 'fixture' . DIRECTORY_SEPARATOR . 'failing';
 
-    \Neutrino\Dotenv\Dotenv::load($path);
+    \Neutrino\Dotenv\Loader::load($path);
   }
 }

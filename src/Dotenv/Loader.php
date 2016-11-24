@@ -4,7 +4,7 @@ namespace Neutrino\Dotenv;
 
 use Neutrino\Dotenv\Exception\InvalidFileException;
 
-class Dotenv
+class Loader
 {
   /**
    * Loads environment variables from .env.php to getenv(), $_ENV, and $_SERVER automatically.
