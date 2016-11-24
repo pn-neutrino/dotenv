@@ -20,16 +20,28 @@ class DotenvTest extends PHPUnit_Framework_TestCase
     $this->assertEquals($server, $_SERVER);
   }
 
-  public function testValidLoad()
-  {
-    $expected = [
-      'APP_ENV' => 'testing',
-      'KEY_1'   => 'TESTING_VALUE_1',
-      'KEY_2'   => 'VALUE_2',
-      'KEY_3'   => 'TESTING_VALUE_3',
+  public function dataValidLoad(){
+    return [
+      ['local', [
+        'APP_ENV' => 'local',
+        'KEY_1'   => 'VALUE_1',
+        'KEY_2'   => 'VALUE_2'
+      ]],
+      ['testing', [
+        'APP_ENV' => 'testing',
+        'KEY_1'   => 'TESTING_VALUE_1',
+        'KEY_2'   => 'VALUE_2',
+        'KEY_3'   => 'TESTING_VALUE_3',
+      ]]
     ];
+  }
 
-    $path = __DIR__ . DIRECTORY_SEPARATOR . 'fixture' . DIRECTORY_SEPARATOR . 'testing';
+  /**
+   * @dataProvider dataValidLoad
+   */
+  public function testValidLoad($env, $expected)
+  {
+    $path = __DIR__ . DIRECTORY_SEPARATOR . 'fixture' . DIRECTORY_SEPARATOR . $env;
 
     $this->assertTrue(\Neutrino\Dotenv\Loader::load($path));
 
